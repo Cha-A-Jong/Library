@@ -16,6 +16,9 @@ public class Book {
     @OneToOne
     private Genre genreId;
 
+    @ManyToOne
+    private Author authorId;
+
     public Long getId() {
         return id;
     }
@@ -62,5 +65,13 @@ public class Book {
 
     public void setGenreId(Genre genreId) {
         this.genreId = genreId;
+    }
+
+    public Author getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Author authorId) {
+        this.authorId = authorId;
     }
 }

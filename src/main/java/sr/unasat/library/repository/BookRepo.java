@@ -42,4 +42,30 @@ public class BookRepo {
         }
         return book;
     }
+
+    public Book deleteBook(Book book) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.find(Book.class, book.getId());
+            if (book != null) entityManager.remove(book);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+        return book;
+    }
+
+    public Book updateBook(Book book){
+        try{
+            entityManager.getTransaction().begin();
+            entityManager.find(Book.class, book.getId());
+            entityManager.merge(book);
+            entityManager.getTransaction().commit();
+        }catch (Exception e){
+            e.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+        return book;
+    }
 }

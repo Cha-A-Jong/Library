@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import sr.unasat.library.entities.Author;
 import sr.unasat.library.entities.Book;
+import sr.unasat.library.entities.Genre;
 
 import java.util.List;
 
@@ -33,7 +34,31 @@ public class AuthorRepo {
             entityManager.getTransaction().rollback();
         }
         return author;
-
   }
+    public Author deleteAuthor(Author author) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.find(Author.class, author.getId());
+            if (author != null) entityManager.remove(author);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+        return author;
+    }
+
+    public Author updateAuthor(Author author){
+        try{
+            entityManager.getTransaction().begin();
+            entityManager.find(Author.class, author.getId());
+            entityManager.merge(author);
+            entityManager.getTransaction().commit();
+        }catch (Exception e){
+            e.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+        return author;
+    }
 }
 

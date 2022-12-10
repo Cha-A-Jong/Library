@@ -13,36 +13,42 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-//        BookService bookService = new BookService();
-//        GenreService genreService = new GenreService();
-//
-//        Genre genre = new Genre();
-//        genre.setName("Fantasy");
-//
-//        Genre genres = genreService.createGenre(genre);
-//
-//        Book createBook = new Book();
-//        createBook.setIsbn("152663788X");
-//        createBook.setTitle("Harry Potter and the Chamber of Secrets");
-//        createBook.setAuthor("J.K.Rowling");
-//
-//        createBook.setGenreId(genres);
-//        bookService.createBook(createBook);
-//
-//        List<Book> books = bookService.getBook();
-//        books.forEach( book-> {
-//            System.out.println("ISBN = " + book.getIsbn() + "|| Title = " + book.getTitle());
-//        });
-
+        BookService bookService = new BookService();
+        GenreService genreService = new GenreService();
         AuthorService authorService = new AuthorService();
-        Author authorObj = new Author();
-        authorObj.setName("Rowling");
-        authorObj.setFirstname("Joanna");
+        MemberService memberService = new MemberService();
 
-        List<Author> authors = authorService.getAuthor();
-        authors.forEach( author-> {
-            System.out.println("ISBN = " + author.getName() + "|| Title = " + author.getFirstname());
+        Genre genre = new Genre();
+        genre.setName("Fantasy");
+
+        Author author = new Author();
+        author.setFirstname("Joanna");
+        author.setLastname("Rowling");
+
+        Member member = new Member();
+        member.setFirstname("Chanelle");
+        member.setLastname("Cha-A-Jong");
+        member.setDate_of_birth("1990-02-11");
+        member.setLibrary_number("202212001");
+        member.setCbb_id_nummer("FI000794");
+
+        Genre genres = genreService.createGenre(genre);
+        Author authors = authorService.createAuthor(author);
+
+        Book createBook = new Book();
+        createBook.setIsbn("152663788X");
+        createBook.setTitle("Harry Potter and the Chamber of Secrets");
+
+        createBook.setGenreId(genres);
+        createBook.setAuthorId(authors);
+
+        bookService.createBook(createBook);
+
+        List<Book> books = bookService.getBook();
+        books.forEach( book-> {
+            System.out.println("ISBN = " + book.getIsbn() + "|| Title = " + book.getTitle());
         });
+
 
     }
 }

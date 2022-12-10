@@ -2,6 +2,7 @@ package sr.unasat.library.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import sr.unasat.library.entities.Book;
 import sr.unasat.library.entities.Genre;
 
 import java.util.List;
@@ -29,6 +30,32 @@ public class GenreRepo {
             entityManager.persist(genre);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
+            e.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+        return genre;
+    }
+
+    public Genre deleteGenre(Genre genre) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.find(Genre.class, genre.getId());
+            if (genre != null) entityManager.remove(genre);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+        return genre;
+    }
+
+    public Genre updateGenre(Genre genre){
+        try{
+            entityManager.getTransaction().begin();
+            entityManager.find(Genre.class, genre.getId());
+            entityManager.merge(genre);
+            entityManager.getTransaction().commit();
+        }catch (Exception e){
             e.printStackTrace();
             entityManager.getTransaction().rollback();
         }

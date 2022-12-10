@@ -22,4 +22,12 @@ public class BookService {
     public Book createBook(Book book){
         return bookRepo.createBook(book);
     }
+
+    public Book updateBook(Book book) {
+        return bookRepo.updateBook(book);
+    }
+
+    public Book deleteBook(Book book) {
+        return bookRepo.deleteBook(book);
+    }
 }

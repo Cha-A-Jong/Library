@@ -2,6 +2,8 @@ package sr.unasat.library.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class Book {
 
@@ -11,13 +13,18 @@ public class Book {
     private String isbn;
     private String title;
     private String subtitle;
-    private String author;
 
     @OneToOne
     private Genre genreId;
 
     @ManyToOne
     private Author authorId;
+
+    @ManyToMany (cascade = {CascadeType.ALL})
+    @JoinTable (name = "Book_Member",
+            joinColumns = {@JoinColumn(name = "book_id")},
+            inverseJoinColumns = {@JoinColumn(name = "member_id")})
+    private Set<Book> books;
 
     public Long getId() {
         return id;
@@ -51,14 +58,6 @@ public class Book {
         this.subtitle = subtitle;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public Genre getGenreId() {
         return genreId;
     }
@@ -73,5 +72,13 @@ public class Book {
 
     public void setAuthorId(Author authorId) {
         this.authorId = authorId;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 }

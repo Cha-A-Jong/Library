@@ -10,7 +10,7 @@ import java.util.Set;
 public class Member {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstname;
     private String lastname;
@@ -18,11 +18,15 @@ public class Member {
     private String library_number;
     private String cbb_id_nummer;
 
-    @ManyToMany (cascade = {CascadeType.ALL})
-    @JoinTable (name = "Book_Member",
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "borrowreceipt_id")
+    private BorrowReceipt borrowReceipt;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "book_member",
             joinColumns = {@JoinColumn(name = "member_id")},
             inverseJoinColumns = {@JoinColumn(name = "book_id")})
-    private Set<Member> members;
+    private Set<Book> books;
 
     public Long getId() {
         return id;
@@ -72,11 +76,21 @@ public class Member {
         this.cbb_id_nummer = cbb_id_nummer;
     }
 
-    public Set<Member> getMembers() {
-        return members;
+    public Set<Book> getBooks() {
+        return books;
     }
 
-    public void setMembers(Set<Member> members) {
-        this.members = members;
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
+    public BorrowReceipt getBorrowReceipt() {
+        return borrowReceipt;
+    }
+
+    public void setBorrowReceipt(BorrowReceipt borrowReceipt) {
+        this.borrowReceipt = borrowReceipt;
     }
 }
+
+

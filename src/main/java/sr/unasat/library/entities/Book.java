@@ -8,23 +8,24 @@ import java.util.Set;
 public class Book {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String isbn;
     private String title;
     private String subtitle;
 
     @OneToOne
-    private Genre genreId;
+    private Genre genre;
 
     @ManyToOne
-    private Author authorId;
+    @JoinColumn(name = "author_id")
+    private Author author;
 
-    @ManyToMany (cascade = {CascadeType.ALL})
-    @JoinTable (name = "Book_Member",
+    @ManyToMany
+    @JoinTable (name = "book_member",
             joinColumns = {@JoinColumn(name = "book_id")},
             inverseJoinColumns = {@JoinColumn(name = "member_id")})
-    private Set<Book> books;
+    private Set<Member> members;
 
     public Long getId() {
         return id;
@@ -58,27 +59,31 @@ public class Book {
         this.subtitle = subtitle;
     }
 
-    public Genre getGenreId() {
-        return genreId;
+    public Genre getGenre() {
+        return genre;
     }
 
-    public void setGenreId(Genre genreId) {
-        this.genreId = genreId;
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
-    public Author getAuthorId() {
-        return authorId;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(Author authorId) {
-        this.authorId = authorId;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
-    public Set<Book> getBooks() {
-        return books;
+    public Set<Member> getMembers() {
+        return members;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setMembers(Set<Member> members) {
+        this.members = members;
     }
+        public void setMember(Member members) {
+    }
+
 }
+

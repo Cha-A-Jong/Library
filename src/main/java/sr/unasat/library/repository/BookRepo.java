@@ -15,14 +15,6 @@ public class BookRepo {
         this.entityManager = entityManager;
     }
 
-    // alle records ophalen
-//    public List<Book> getBook() {
-//        String query = "select m from Member m";
-//        TypedQuery<Book> typedQuery = entityManager.createQuery(query, Book.class);
-//        List<Book> bookList = typedQuery.getResultList();
-//        return bookList;
-//    }
-
     public List<Book> getBook(){
         String query = "select b from Book b";
         TypedQuery<Book> typedQuery = entityManager.createQuery(query, Book.class);

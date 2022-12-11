@@ -2,10 +2,7 @@ package sr.unasat.library.app;
 
 import jakarta.persistence.EntityManager;
 import sr.unasat.library.configuration.JPAConfig;
-import sr.unasat.library.entities.Author;
-import sr.unasat.library.entities.Book;
-import sr.unasat.library.entities.Genre;
-import sr.unasat.library.entities.Member;
+import sr.unasat.library.entities.*;
 import sr.unasat.library.service.*;
 
 import java.util.List;
@@ -17,6 +14,7 @@ public class Application {
         GenreService genreService = new GenreService();
         AuthorService authorService = new AuthorService();
         MemberService memberService = new MemberService();
+        BorrowReceiptService borrowReceiptService = new BorrowReceiptService();
 
         Genre genre = new Genre();
         genre.setName("Fantasy");
@@ -28,27 +26,35 @@ public class Application {
         Member member = new Member();
         member.setFirstname("Chanelle");
         member.setLastname("Cha-A-Jong");
-        member.setDate_of_birth("1990-02-11");
+        member.setDate_of_birth("14-02-1990");
         member.setLibrary_number("202212001");
         member.setCbb_id_nummer("FI000794");
 
+        BorrowReceipt borrowReceiptObj = new BorrowReceipt();
+        borrowReceiptObj.setReceipt_number("2022-001");
+        borrowReceiptObj.setBorrow_date("08-12-2022");
+        borrowReceiptObj.setDue_date("15-12-2022");
+        borrowReceiptObj.setRemark("laat ingeleverd");
+
         Genre genres = genreService.createGenre(genre);
         Author authors = authorService.createAuthor(author);
+        Member members = memberService.createMember(member);
+        BorrowReceipt borrowReceipts = borrowReceiptService.createBorrowReceipt(borrowReceiptObj);
 
-        Book createBook = new Book();
-        createBook.setIsbn("152663788X");
-        createBook.setTitle("Harry Potter and the Chamber of Secrets");
+        Book createBookObj = new Book();
+        createBookObj.setIsbn("152663788X");
+        createBookObj.setTitle("Harry Potter and the Chamber of Secrets");
+        createBookObj.setGenre(genres);
+        createBookObj.setAuthor(authors);
 
-        createBook.setGenreId(genres);
-        createBook.setAuthorId(authors);
+        bookService.createBook(createBookObj);
+        memberService.createMember(members);
+        borrowReceiptService.createBorrowReceipt(borrowReceipts);
 
-        bookService.createBook(createBook);
+//        List<Book> books = bookService.getBook();
+//        books.forEach( book-> {
+//            System.out.println("ISBN = " + book.getIsbn() + "|| Title = " + book.getTitle());
+//        });
 
-        List<Book> books = bookService.getBook();
-        books.forEach( book-> {
-            System.out.println("ISBN = " + book.getIsbn() + "|| Title = " + book.getTitle());
-        });
-
-
-    }
+   }
 }

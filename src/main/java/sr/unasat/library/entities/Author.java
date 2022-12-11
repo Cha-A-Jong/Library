@@ -17,7 +17,7 @@ public class Author {
     private String firstname;
     private String lastname;
 
-    @OneToMany
+    @OneToMany(mappedBy = "author")
     private Set<Book> books;
 
     public Long getId() {

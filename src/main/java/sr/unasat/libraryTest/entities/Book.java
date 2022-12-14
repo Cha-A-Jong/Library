@@ -2,6 +2,7 @@ package sr.unasat.libraryTest.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,14 +19,11 @@ public class Book {
     private Genre genre;
 
     @ManyToOne
-    @JoinColumn(name = "author_id")
+//    @JoinColumn(name = "author_id")
     private Author author;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST})
-    @JoinTable (name = "book_member",
-            joinColumns = {@JoinColumn(name = "book_id")},
-            inverseJoinColumns = {@JoinColumn(name = "member_id")})
-    private Set<Member> members;
+    @ManyToMany(mappedBy = "books")
+    protected Set<Member> members = new HashSet<Member>();
 
     public Long getId() {
         return id;
@@ -82,8 +80,5 @@ public class Book {
     public void setMembers(Set<Member> members) {
         this.members = members;
     }
-        public void setMember(Member members) {
-    }
-
 }
 

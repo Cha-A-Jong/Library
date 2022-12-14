@@ -11,6 +11,7 @@ public class AuthorService {
     private final AuthorRepo authorRepo;
 
     public AuthorService() { this.authorRepo = new AuthorRepo(JPAConfig.getEntityManager());}
+
     public List<Author> getAuthor(){
         return authorRepo.getAuthor();
     }

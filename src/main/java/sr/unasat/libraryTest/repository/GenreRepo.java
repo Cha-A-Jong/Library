@@ -1,7 +1,10 @@
 package sr.unasat.libraryTest.repository;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import sr.unasat.libraryTest.entities.Genre;
+
+import java.util.List;
 
 public class GenreRepo {
 
@@ -12,31 +15,18 @@ public class GenreRepo {
     }
 
     // alle records ophalen
-//    public List<Genre> getGenre() {
-//        String query = "select m from Member m";
-//        TypedQuery<Genre> typedQuery = entityManager.createQuery(query, Genre.class);
-//        List<Genre> genreList = typedQuery.getResultList();
-//        return genreList;
-//    }
+    public List<Genre> getGenre() {
+        String query = "select m from Member m";
+        TypedQuery<Genre> typedQuery = entityManager.createQuery(query, Genre.class);
+        List<Genre> genreList = typedQuery.getResultList();
+        return genreList;
+    }
 
     //invoeren van een record
     public Genre createGenre(Genre genre) {
         try {
             entityManager.getTransaction().begin();
             entityManager.persist(genre);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            entityManager.getTransaction().rollback();
-        }
-        return genre;
-    }
-
-    public Genre deleteGenre(Genre genre) {
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.find(Genre.class, genre.getId());
-            if (genre != null) entityManager.remove(genre);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,6 +42,19 @@ public class GenreRepo {
             entityManager.merge(genre);
             entityManager.getTransaction().commit();
         }catch (Exception e){
+            e.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+        return genre;
+    }
+
+    public Genre deleteGenre(Genre genre) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.find(Genre.class, genre.getId());
+            if (genre != null) entityManager.remove(genre);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
             e.printStackTrace();
             entityManager.getTransaction().rollback();
         }

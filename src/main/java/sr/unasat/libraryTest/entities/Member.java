@@ -1,9 +1,14 @@
 package sr.unasat.libraryTest.entities;
 
-import jakarta.persistence.*;
+import lombok.*;
 
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
 public class Member {
@@ -21,11 +26,11 @@ public class Member {
 //    @JoinColumn(name = "borrowreceipt_id")
     private BorrowReceipt borrowReceipt;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST})
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "book_member",
             joinColumns = {@JoinColumn(name = "member_id")},
             inverseJoinColumns = {@JoinColumn(name = "book_id")})
-    protected Set<Book> books = new HashSet<Book>();
+    private Set<Book> books = new HashSet<Book>();
 
     public Long getId() {
         return id;

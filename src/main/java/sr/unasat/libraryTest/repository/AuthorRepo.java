@@ -33,18 +33,6 @@ public class AuthorRepo {
         }
         return author;
   }
-    public Author deleteAuthor(Author author) {
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.find(Author.class, author.getId());
-            if (author != null) entityManager.remove(author);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            entityManager.getTransaction().rollback();
-        }
-        return author;
-    }
 
     public Author updateAuthor(Author author){
         try{
@@ -53,6 +41,19 @@ public class AuthorRepo {
             entityManager.merge(author);
             entityManager.getTransaction().commit();
         }catch (Exception e){
+            e.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+        return author;
+    }
+
+    public Author deleteAuthor(Author author) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.find(Author.class, author.getId());
+            if (author != null) entityManager.remove(author);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
             e.printStackTrace();
             entityManager.getTransaction().rollback();
         }

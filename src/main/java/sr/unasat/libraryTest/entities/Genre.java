@@ -1,10 +1,14 @@
 package sr.unasat.libraryTest.entities;
 
+import lombok.*;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Genre {
 

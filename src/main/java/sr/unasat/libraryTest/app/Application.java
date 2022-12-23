@@ -7,7 +7,10 @@ public class Application {
 
     public static void main(String[] args) {
 
-        DummyDataService.createDummyData();
+//        DummyDataService.createDummyData();
+
+        BookService bookService = new BookService();
+        System.out.println(bookService.findBookByTitle("The Great Gatsby"));
 
 //        List<Book> books = bookService.getBook();
 //        books.forEach( book-> {

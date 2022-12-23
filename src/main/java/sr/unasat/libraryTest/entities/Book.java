@@ -1,9 +1,14 @@
 package sr.unasat.libraryTest.entities;
 
-import jakarta.persistence.*;
+import lombok.*;
 
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
 public class Book {
@@ -22,8 +27,11 @@ public class Book {
 //    @JoinColumn(name = "author_id")
     private Author author;
 
+    @ManyToOne
+    private BorrowReceipt borrowReceipt;
+
     @ManyToMany(mappedBy = "books")
-    protected Set<Member> members = new HashSet<Member>();
+    private Set<Member> members = new HashSet<Member>();
 
     public Long getId() {
         return id;
@@ -79,6 +87,28 @@ public class Book {
 
     public void setMembers(Set<Member> members) {
         this.members = members;
+    }
+
+    public BorrowReceipt getBorrowReceipt() {
+        return borrowReceipt;
+    }
+
+    public void setBorrowReceipt(BorrowReceipt borrowReceipt) {
+        this.borrowReceipt = borrowReceipt;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", isbn='" + isbn + '\'' +
+                ", title='" + title + '\'' +
+                ", subtitle='" + subtitle + '\'' +
+                ", genre=" + genre +
+                ", author=" + author +
+                ", borrowReceipt=" + borrowReceipt +
+                ", members=" + members +
+                '}';
     }
 }
 

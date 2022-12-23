@@ -1,10 +1,15 @@
 package sr.unasat.libraryTest.entities;
 
+import lombok.*;
+
 import jakarta.persistence.*;
 
-
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class BorrowReceipt {
+
 
     @Id
     @GeneratedValue
@@ -16,6 +21,7 @@ public class BorrowReceipt {
 
     @OneToOne(mappedBy = "borrowReceipt")
     private Member member;
+
 
     public Long getId() {
         return id;

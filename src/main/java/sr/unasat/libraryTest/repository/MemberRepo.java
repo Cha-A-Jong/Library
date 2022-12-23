@@ -28,18 +28,7 @@ public class MemberRepo {
             entityManager.getTransaction().begin();
             entityManager.persist(member);
             entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            entityManager.getTransaction().rollback();
-        }
-        return member;
-    }
-    public Member deleteMember(Member member) {
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.find(Member.class, member.getId());
-            if (member != null) entityManager.remove(member);
-            entityManager.getTransaction().commit();
+            System.out.println("Member has been created");
         } catch (Exception e) {
             e.printStackTrace();
             entityManager.getTransaction().rollback();
@@ -54,6 +43,19 @@ public class MemberRepo {
             entityManager.merge(member);
             entityManager.getTransaction().commit();
         }catch (Exception e){
+            e.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+        return member;
+    }
+
+    public Member deleteMember(Member member) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.find(Member.class, member.getId());
+            if (member != null) entityManager.remove(member);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
             e.printStackTrace();
             entityManager.getTransaction().rollback();
         }

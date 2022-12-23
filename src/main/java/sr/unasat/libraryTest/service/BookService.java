@@ -19,6 +19,8 @@ public class BookService {
         return bookRepo.getBook();
     }
 
+    public Book findBookByTitle(String title) {return bookRepo.findBookByTitle(title);}
+
     public Book createBook(Book book){
         return bookRepo.createBook(book);
     }
@@ -30,4 +32,5 @@ public class BookService {
     public Book deleteBook(Book book) {
         return bookRepo.deleteBook(book);
     }
+
 }

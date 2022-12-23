@@ -1,4 +1,4 @@
-package sr.unasat.libraryTest.entities;
+package sr.unasat.library.entities;
 
 import lombok.*;
 

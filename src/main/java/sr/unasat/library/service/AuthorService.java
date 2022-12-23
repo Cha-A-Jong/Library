@@ -1,8 +1,8 @@
-package sr.unasat.libraryTest.service;
+package sr.unasat.library.service;
 
-import sr.unasat.libraryTest.configuration.JPAConfig;
-import sr.unasat.libraryTest.entities.Author;
-import sr.unasat.libraryTest.repository.AuthorRepo;
+import sr.unasat.library.configuration.JPAConfig;
+import sr.unasat.library.entities.Author;
+import sr.unasat.library.repository.AuthorRepo;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package sr.unasat.libraryTest.repository;
+package sr.unasat.library.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
-import sr.unasat.libraryTest.entities.Author;
-import sr.unasat.libraryTest.entities.Book;
-import sr.unasat.libraryTest.entities.BorrowReceipt;
+import sr.unasat.library.entities.Author;
+import sr.unasat.library.entities.Book;
+import sr.unasat.library.entities.BorrowReceipt;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package sr.unasat.libraryTest.configuration;
+package sr.unasat.library.configuration;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

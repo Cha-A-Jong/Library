@@ -1,68 +1,65 @@
-package sr.unasat.libraryTest.repository;
+package sr.unasat.library.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
-import sr.unasat.libraryTest.entities.Member;
+import sr.unasat.library.entities.Genre;
 
 import java.util.List;
 
-public class MemberRepo {
+public class GenreRepo {
 
     private EntityManager entityManager;
 
-    public MemberRepo(EntityManager entityManager) {
+    public GenreRepo(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
     // alle records ophalen
-    public List<Member> getMembers() {
+    public List<Genre> getGenre() {
         String query = "select m from Member m";
-        TypedQuery<Member> typedQuery = entityManager.createQuery(query, Member.class);
-        List<Member> memberList = typedQuery.getResultList();
-        return memberList;
+        TypedQuery<Genre> typedQuery = entityManager.createQuery(query, Genre.class);
+        List<Genre> genreList = typedQuery.getResultList();
+        return genreList;
     }
 
     //invoeren van een record
-    public Member createMember(Member member) {
+    public Genre createGenre(Genre genre) {
         try {
             entityManager.getTransaction().begin();
-            entityManager.persist(member);
+            entityManager.persist(genre);
             entityManager.getTransaction().commit();
-            System.out.println("Member has been created");
         } catch (Exception e) {
             e.printStackTrace();
             entityManager.getTransaction().rollback();
         }
-        return member;
+        return genre;
     }
 
-    public Member updateMember(Member member){
+    public Genre updateGenre(Genre genre){
         try{
             entityManager.getTransaction().begin();
-            entityManager.find(Member.class, member.getId());
-            entityManager.merge(member);
+            entityManager.find(Genre.class, genre.getId());
+            entityManager.merge(genre);
             entityManager.getTransaction().commit();
         }catch (Exception e){
             e.printStackTrace();
             entityManager.getTransaction().rollback();
         }
-        return member;
+        return genre;
     }
 
-    public Member deleteMember(Member member) {
+    public Genre deleteGenre(Genre genre) {
         try {
             entityManager.getTransaction().begin();
-            entityManager.find(Member.class, member.getId());
-            if (member != null) entityManager.remove(member);
+            entityManager.find(Genre.class, genre.getId());
+            if (genre != null) entityManager.remove(genre);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
             entityManager.getTransaction().rollback();
         }
-        return member;
+        return genre;
     }
 }
-
-
 
 

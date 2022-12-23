@@ -1,8 +1,8 @@
-package sr.unasat.libraryTest.service;
+package sr.unasat.library.service;
 
-import sr.unasat.libraryTest.configuration.JPAConfig;
-import sr.unasat.libraryTest.entities.BorrowReceipt;
-import sr.unasat.libraryTest.repository.BorrowReceiptRepo;
+import sr.unasat.library.configuration.JPAConfig;
+import sr.unasat.library.entities.BorrowReceipt;
+import sr.unasat.library.repository.BorrowReceiptRepo;
 
 public class BorrowReceiptService {
     private final BorrowReceiptRepo borrowReceiptRepo;

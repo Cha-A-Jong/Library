@@ -1,8 +1,8 @@
-package sr.unasat.libraryTest.service;
+package sr.unasat.library.service;
 
-import sr.unasat.libraryTest.configuration.JPAConfig;
-import sr.unasat.libraryTest.entities.Genre;
-import sr.unasat.libraryTest.repository.GenreRepo;
+import sr.unasat.library.configuration.JPAConfig;
+import sr.unasat.library.entities.Genre;
+import sr.unasat.library.repository.GenreRepo;
 
 public class GenreService {
     private final GenreRepo genreRepo;

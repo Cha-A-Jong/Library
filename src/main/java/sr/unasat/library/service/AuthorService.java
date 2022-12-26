@@ -16,15 +16,18 @@ public class AuthorService {
         return authorRepo.getAuthor();
     }
 
+    public Author findAuthorByLastName(String lastname) {return authorRepo.findAuthorByLastName(lastname);}
+
+//    public Author findAuthorById(Long id) {return  authorRepo.findAuthorById(id);}
+
     public Author createAuthor(Author author){
         return authorRepo.createAuthor(author);
     }
 
-    public Author updateAuthor(Author author) {
-        return authorRepo.updateAuthor(author);
-    }
+    public Author updateAuthor(Author author) {return authorRepo.updateAuthor(author);}
 
-    public Author deleteAuthor(Author author) {
+    public int deleteAuthor(Author author) {
         return authorRepo.deleteAuthor(author);
     }
+
 }

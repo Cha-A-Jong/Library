@@ -104,10 +104,6 @@ public class Book {
                 ", isbn='" + isbn + '\'' +
                 ", title='" + title + '\'' +
                 ", subtitle='" + subtitle + '\'' +
-                ", genre=" + genre +
-                ", author=" + author +
-                ", borrowReceipt=" + borrowReceipt +
-                ", members=" + members +
                 '}';
     }
 }

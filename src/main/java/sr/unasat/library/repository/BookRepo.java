@@ -7,6 +7,7 @@ import sr.unasat.library.entities.Book;
 import sr.unasat.library.entities.BorrowReceipt;
 
 import java.util.List;
+import java.util.Optional;
 
 public class BookRepo {
 
@@ -31,6 +32,11 @@ public class BookRepo {
         Book book = typedQuery.setParameter("title", title).getSingleResult();
         entityManager.getTransaction().commit();
         return book;
+    }
+
+    public Optional<Book> findById(Long id){
+        Book book = entityManager.find(Book.class,id);
+        return book != null ? Optional.of(book) : Optional.empty();
     }
 
     //invoeren van een record

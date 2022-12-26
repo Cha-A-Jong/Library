@@ -5,6 +5,7 @@ import sr.unasat.library.entities.Book;
 import sr.unasat.library.repository.BookRepo;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public class BookService {
@@ -20,6 +21,8 @@ public class BookService {
     }
 
     public Book findBookByTitle(String title) {return bookRepo.findBookByTitle(title);}
+
+    public Optional<Book> findById(Long Id) {return bookRepo.findById(Id);}
 
     public Book createBook(Book book){
         return bookRepo.createBook(book);

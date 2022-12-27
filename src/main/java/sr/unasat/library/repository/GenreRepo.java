@@ -2,6 +2,7 @@ package sr.unasat.library.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import sr.unasat.library.entities.Book;
 import sr.unasat.library.entities.Genre;
 
 import java.util.List;
@@ -16,10 +17,19 @@ public class GenreRepo {
 
     // alle records ophalen
     public List<Genre> getGenre() {
-        String query = "select m from Member m";
+        String query = "select g from Genre g";
         TypedQuery<Genre> typedQuery = entityManager.createQuery(query, Genre.class);
         List<Genre> genreList = typedQuery.getResultList();
         return genreList;
+    }
+
+    public Genre findGenreByName (String name){
+        entityManager.getTransaction().begin();
+        String query = "select g from Genre g where g.name = :name";
+        TypedQuery<Genre> typedQuery = entityManager.createQuery(query, Genre.class);
+        Genre genre = typedQuery.setParameter("name", name).getSingleResult();
+        entityManager.getTransaction().commit();
+        return genre;
     }
 
     //invoeren van een record

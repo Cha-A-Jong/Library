@@ -19,9 +19,9 @@ public class Application {
 //
 //        bookService.updateBook(book1);
 //        book1.setSubtitle("The Book Thief");
-
-        AuthorService authorService = new AuthorService();
-//        System.out.println(authorService.findAuthorByLastName("King"));
+//
+//        AuthorService authorService = new AuthorService();
+////        System.out.println(authorService.findAuthorByLastName("King"));
 //
 //        Author findAuthor = authorService.findAuthorByLastName("Rowling");
 //        findAuthor.setFirstname("Mad");
@@ -29,10 +29,10 @@ public class Application {
 //        authorService.updateAuthor(findAuthor);
 //        System.out.println("The following records are updated: " + findAuthor);
 
-        Author findAuthor = authorService.findAuthorByLastName("Lad");
-       findAuthor.setId(1L);
-       authorService.deleteAuthor(findAuthor);
-        System.out.println("The following records are deleted: ");
+//        Author findAuthor = authorService.findAuthorByLastName("Lad");
+//       findAuthor.setId(1L);
+//       authorService.deleteAuthor(findAuthor);
+//        System.out.println("The following records are deleted: ");
 
 //        List<Book> books = bookService.getBook();
 //        books.forEach( book-> {

@@ -2,6 +2,7 @@ package sr.unasat.library.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import sr.unasat.library.entities.BorrowReceipt;
 import sr.unasat.library.entities.Member;
 
 import java.util.List;
@@ -21,6 +22,16 @@ public class MemberRepo {
         List<Member> memberList = typedQuery.getResultList();
         return memberList;
     }
+
+    public Member findMemberByLastName (String lastname){
+        entityManager.getTransaction().begin();
+        String query = "select m from Member m where m.lastname = :lastname";
+        TypedQuery<Member> typedQuery = entityManager.createQuery(query, Member.class);
+        Member member = typedQuery.setParameter("lastname", lastname).getSingleResult();
+        entityManager.getTransaction().commit();
+        return member;
+    }
+
 
     //invoeren van een record
     public Member createMember(Member member) {

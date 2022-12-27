@@ -2,6 +2,7 @@ package sr.unasat.library.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import sr.unasat.library.entities.Book;
 import sr.unasat.library.entities.BorrowReceipt;
 
 import java.util.List;
@@ -31,6 +32,15 @@ public class BorrowReceiptRepo {
 //        }
 //        return borrowReceipt;
 //    }
+
+    public BorrowReceipt findBorrowReceiptByReceiptNumber (String receipt_number){
+        entityManager.getTransaction().begin();
+        String query = "select br from BorrowReceipt br where br.receipt_number = :receipt_number";
+        TypedQuery<BorrowReceipt> typedQuery = entityManager.createQuery(query, BorrowReceipt.class);
+        BorrowReceipt borrowReceipt = typedQuery.setParameter("receipt_number", receipt_number).getSingleResult();
+        entityManager.getTransaction().commit();
+        return borrowReceipt;
+    }
 
     public BorrowReceipt createBorrowReceipt(BorrowReceipt borrowReceipt) {
         try {

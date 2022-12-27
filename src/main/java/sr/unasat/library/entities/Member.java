@@ -20,7 +20,7 @@ public class Member {
     private String lastname;
     private String date_of_birth;
     private String library_number;
-    private String cbb_id_nummer;
+    private String cbb_id_number;
 
     @OneToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "borrowreceipt_id")
@@ -72,12 +72,12 @@ public class Member {
         this.library_number = library_number;
     }
 
-    public String getCbb_id_nummer() {
-        return cbb_id_nummer;
+    public String getCbb_id_number() {
+        return cbb_id_number;
     }
 
-    public void setCbb_id_nummer(String cbb_id_nummer) {
-        this.cbb_id_nummer = cbb_id_nummer;
+    public void setCbb_id_number(String cbb_id_nummer) {
+        this.cbb_id_number = cbb_id_nummer;
     }
 
     public BorrowReceipt getBorrowReceipt() {

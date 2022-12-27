@@ -122,31 +122,31 @@ public class DummyDataService {
         member1.setLastname("Cha-A-Jong");
         member1.setDate_of_birth("14-02-1990");
         member1.setLibrary_number("202212001");
-        member1.setCbb_id_nummer("FI000794");
+        member1.setCbb_id_number("FI000794");
 
         member2.setFirstname("Ashwin");
         member2.setLastname("Adhin");
         member2.setDate_of_birth("10-06-1980");
         member2.setLibrary_number("202211002");
-        member2.setCbb_id_nummer("BA080211");
+        member2.setCbb_id_number("BA080211");
 
         member3.setFirstname("Bronto");
         member3.setLastname("Somohardjo");
         member3.setDate_of_birth("20-01-1980");
         member3.setLibrary_number("202212003");
-        member3.setCbb_id_nummer("DA000123");
+        member3.setCbb_id_number("DA000123");
 
         member4.setFirstname("Chan");
         member4.setLastname("Santokhi");
         member4.setDate_of_birth("03-02-1959");
         member4.setLibrary_number("202212002");
-        member4.setCbb_id_nummer("AB000111");
+        member4.setCbb_id_number("AB000111");
 
         member5.setFirstname("Ronnie");
         member5.setLastname("Brunswijk");
         member5.setDate_of_birth("07-03-1961");
         member5.setLibrary_number("202211001");
-        member5.setCbb_id_nummer("BO004587");
+        member5.setCbb_id_number("BO004587");
 
         memberService.createMember(member1);
         memberService.createMember(member2);

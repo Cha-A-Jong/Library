@@ -97,14 +97,5 @@ public class Book {
         this.borrowReceipt = borrowReceipt;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", isbn='" + isbn + '\'' +
-                ", title='" + title + '\'' +
-                ", subtitle='" + subtitle + '\'' +
-                '}';
-    }
 }
 

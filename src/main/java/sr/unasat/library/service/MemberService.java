@@ -1,6 +1,7 @@
 package sr.unasat.library.service;
 
 import sr.unasat.library.configuration.JPAConfig;
+import sr.unasat.library.entities.Book;
 import sr.unasat.library.entities.Member;
 import sr.unasat.library.repository.MemberRepo;
 
@@ -17,6 +18,8 @@ public class MemberService {
     public List<Member> getMember(){
         return memberRepo.getMembers();
     }
+
+    public Member findMemberByLastName(String lastname) {return memberRepo.findMemberByLastName(lastname);}
 
     public Member createMember(Member member){
         return memberRepo.createMember(member);

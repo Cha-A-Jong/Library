@@ -26,8 +26,6 @@ public class AuthorService {
 
     public Author updateAuthor(Author author) {return authorRepo.updateAuthor(author);}
 
-    public int deleteAuthor(Author author) {
-        return authorRepo.deleteAuthor(author);
-    }
+    public Author deleteAuthor(Author author) {return authorRepo.deleteAuthor(author);}
 
 }

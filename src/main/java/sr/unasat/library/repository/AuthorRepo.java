@@ -78,28 +78,30 @@ public class AuthorRepo {
 //        return rowsUpdated;
 //    }
 
-//    public Author deleteAuthor(Author author) {
-//        try {
-//            entityManager.getTransaction().begin();
-//            entityManager.find(Author.class, author.getId());
-//            if (author != null) entityManager.remove(author);
-//            entityManager.getTransaction().commit();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            entityManager.getTransaction().rollback();
-//        }
-//        return author;
-//    }
-
-    public int deleteAuthor(Author author){
-        entityManager.getTransaction().begin();
-        String query ="Delete from Author " + "Where id = :author_id";
-        TypedQuery<Author> typedQuery = entityManager.createQuery(query, Author.class);
-        typedQuery.setParameter("author_id",1);
-        int result = typedQuery.executeUpdate();
-        System.out.println("Rows affected: " + result);
-        entityManager.getTransaction().commit();
-        return result;
+    public Author deleteAuthor(Author author) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.find(Author.class, author.getId());
+            if (author != null) {
+                entityManager.remove(author);
+            }
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+        return author;
     }
+
+//    public int deleteAuthor(Author author){
+//        entityManager.getTransaction().begin();
+//        String query ="Delete from Author " + "Where id = :author_id";
+//        TypedQuery<Author> typedQuery = entityManager.createQuery(query, Author.class);
+//        typedQuery.setParameter("author_id",1);
+//        int result = typedQuery.executeUpdate();
+//        System.out.println("Rows affected: " + result);
+//        entityManager.getTransaction().commit();
+//        return result;
+//    }
 }
 

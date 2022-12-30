@@ -36,4 +36,7 @@ public class BookService {
         return bookRepo.deleteBook(book);
     }
 
+//    public void createBookAndBorrowReceipt() {
+//
+//    }
 }

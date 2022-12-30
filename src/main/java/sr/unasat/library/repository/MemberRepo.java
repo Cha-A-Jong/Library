@@ -32,7 +32,6 @@ public class MemberRepo {
         return member;
     }
 
-
     //invoeren van een record
     public Member createMember(Member member) {
         try {

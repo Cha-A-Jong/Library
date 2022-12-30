@@ -1,14 +1,15 @@
 package sr.unasat.library;
 
+import sr.unasat.library.entities.Author;
 import sr.unasat.library.service.DummyDataService;
 import sr.unasat.library.service.ReadUpdateDeleteForAllService;
 
 public class Main {
     public static void main(String[] args) {
 
-//        DummyDataService.createDummyData();
+//DummyDataService.createDummyData();
 
-        //Author Service
+//        Author Service
 //        ReadUpdateDeleteForAllService.RetrieveAuthor();
 //        ReadUpdateDeleteForAllService.UpdateAuthor();
 //        ReadUpdateDeleteForAllService.DeleteAuthor();

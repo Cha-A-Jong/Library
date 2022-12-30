@@ -17,14 +17,9 @@ public class BorrowReceiptService {
 
     public BorrowReceipt findBorrowReceiptByReceiptNumber(String receipt_number) {return borrowReceiptRepo.findBorrowReceiptByReceiptNumber(receipt_number);}
 
-    public BorrowReceipt createBorrowReceipt(BorrowReceipt borrowReceipt){
-        return borrowReceiptRepo.createBorrowReceipt(borrowReceipt);
-    }
-    public BorrowReceipt updateBorrowReceipt(BorrowReceipt borrowReceipt) {
-        return borrowReceiptRepo.updateBorrowReceipt(borrowReceipt);
-    }
+    public BorrowReceipt createBorrowReceipt(BorrowReceipt borrowReceipt){ return borrowReceiptRepo.createBorrowReceipt(borrowReceipt);}
 
-    public BorrowReceipt deleteBorrowReceipt(BorrowReceipt borrowReceipt) {
-        return borrowReceiptRepo.deleteBorrowReceipt(borrowReceipt);
-    }
+    public BorrowReceipt updateBorrowReceipt(BorrowReceipt borrowReceipt) { return borrowReceiptRepo.updateBorrowReceipt(borrowReceipt);}
+
+    public BorrowReceipt deleteBorrowReceipt(BorrowReceipt borrowReceipt) { return borrowReceiptRepo.deleteBorrowReceipt(borrowReceipt);}
 }

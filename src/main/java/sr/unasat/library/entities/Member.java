@@ -76,8 +76,8 @@ public class Member {
         return cbb_id_number;
     }
 
-    public void setCbb_id_number(String cbb_id_nummer) {
-        this.cbb_id_number = cbb_id_nummer;
+    public void setCbb_id_number(String cbb_id_number) {
+        this.cbb_id_number = cbb_id_number;
     }
 
     public BorrowReceipt getBorrowReceipt() {
